@@ -17,8 +17,12 @@ import { checkValid, checkWhitelist } from "./quota.ts";
 const apiKey = Deno.env.get("OPENAI_API_KEY");
 assert(apiKey, "failed to get openAI API key");
 
+const baseUrl = Deno.env.get("OPENAI_BASE_URL");
+assert(baseUrl, "failed to get openai base url");
+
 const openai = new OpenAI({
   apiKey: apiKey,
+  baseUrl: baseUrl,
 });
 
 export async function getCode(
